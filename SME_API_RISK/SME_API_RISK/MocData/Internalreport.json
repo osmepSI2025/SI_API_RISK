@@ -1,0 +1,19 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "departments": "[ฝอก.] ฝายอำนวยการ",
+      "AssessControlResult": "ออกประกาศแนวนโยบายและแนวปฏิบัติในการรักษาความ",
+      "quaterFinished": "ไตรมาสที่ 1",
+      "q1": "ไดการจัดอบรมเมื่อ",
+      "q2": "-",
+      "q3": "-",
+      "q4": "-",
+      "result": "เปนไปตามเปา",
+      "ClosedComment": "-",
+      "updateDate": "2025-04-08T12:28:48.850Z"
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

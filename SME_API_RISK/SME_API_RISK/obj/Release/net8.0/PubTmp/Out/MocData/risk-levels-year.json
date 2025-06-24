@@ -1,0 +1,20 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "riskDefineID": 1,
+      "riskDefine": "RF6 การเขารวมประกวดรางวัลรัฐบาลดิจิทัล",
+      "riskLevelList": [
+        {
+          "riskLevelTitle": "คาระดับความเสี่ยงกอนบริหารจัดการ",
+          "l": 5,
+          "i": 5,
+          "colors": "red",
+          "updateDate": "2025-05-15T12:28:48.850Z"
+        }
+      ]
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

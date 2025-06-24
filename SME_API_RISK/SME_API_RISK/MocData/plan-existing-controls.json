@@ -1,0 +1,32 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "riskDefineID": 1,
+      "existingControlList": [
+        {
+          "existingControl": "แผนงาน Existing Control5555",
+          "updateDate": "2025-04-08T12:28:48.850Z"
+        },
+        {
+          "existingControl": "แผนงาน Existing Control6666",
+          "updateDate": "2025-04-08T12:28:48.850Z"
+        },
+        {
+          "existingControl": "แผนงาน Existing Control7777",
+          "updateDate": "2025-04-08T12:28:48.850Z"
+        },
+        {
+          "existingControl": "แผนงาน Existing Control8888",
+          "updateDate": "2025-04-08T12:28:48.850Z"
+        },
+        {
+          "existingControl": "แผนงาน Existing Control99999",
+          "updateDate": "2025-04-08T12:28:48.850Z"
+        }
+      ]
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

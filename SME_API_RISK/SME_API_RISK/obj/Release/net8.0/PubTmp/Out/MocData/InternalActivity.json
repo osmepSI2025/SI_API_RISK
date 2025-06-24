@@ -1,0 +1,13 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "departments": "[ฝอก.] ฝายอำนวยการ",
+      "activities": "จัดประชุมคกก.สงเสริม/คกก.บริหาร สสว.",
+      "process": "การกระทำ",
+      "updateDate": "2025-04-08T12:28:48.850Z"
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

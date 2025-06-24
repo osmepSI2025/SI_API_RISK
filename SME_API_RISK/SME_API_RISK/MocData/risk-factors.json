@@ -1,0 +1,27 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "riskFactorList": [
+    {
+      "RiskDefineID": 1,
+      "riskYear": 2566,
+      "riskRFName": "RF1 อาจไมสามารถบูรณาการขับเคลื่อนมาตรการ/แผนงานในการสงเสริม SMExxxxx",
+      "riskTypeId": 1,
+      "riskTypeName": "Strategic Risk 55555",
+      "riskRootCause": "การสรางมูลคาทางเศรษฐกิจจากมาตรการ/แผนงาน ที่มีผลกระทบต่ำกวาเป้าหมาย",
+      "riskOwnerName": "[ฝนผ.] ฝายนโยบายและแผนสงเสริม SMEs",
+      "updateDate": "2025-04-08T12:28:48.850Z"
+    },
+    {
+      "RiskDefineID": 2,
+      "riskYear": 2566,
+      "riskRFName": "RF1 อาจไมสามารถบูรณาการขับเคลื่อนมาตรการ/แผนงานในการสงเสริม SME",
+      "riskTypeId": 1,
+      "riskTypeName": "Strategic Risk",
+      "riskRootCause": "การสรางมูลคาทางเศรษฐกิจจากมาตรการ/แผนงาน ที่มีผลกระทบต่ำกวาเป้าหมาย",
+      "riskOwnerName": "[ฝนผ.] ฝายนโยบายและแผนสงเสริม SMEs",
+      "updateDate": "2025-04-07T12:28:48.850Z"
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+} 

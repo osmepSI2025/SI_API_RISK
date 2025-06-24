@@ -1,0 +1,13 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "riskDefineID": 1,
+      "quarter": 1,
+      "performances": "สสว. มีการจัดทำแผนการดำเนินงานเพื่อยกระดับความพรอมรัฐบาลดิจิทัล ของ",
+      "updateDate": "2025-04-08T12:28:48.850Z"
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

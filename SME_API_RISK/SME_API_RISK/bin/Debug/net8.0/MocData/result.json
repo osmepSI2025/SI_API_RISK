@@ -1,0 +1,19 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "riskDefineID": 1,
+      "riskManageList": [
+        {
+          "rootCauseType": "สาเหตุหลัก",
+          "rootCauseName": "ไมสามารถดำเนินงานไดอยางครบถวน",
+          "performances": "ฝขท.ไดเวียนผลการวิเคราะห",
+          "status": "เป็นไปตามแผน",
+          "updateDate": "2025-05-16T12:28:48.850Z"
+        }
+      ]
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

@@ -1,0 +1,14 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "id": 1,
+      "levels": 1,
+      "likelihoodDefine": "นอยกวา 70%",
+      "impactDefine": "มากกวา 30%",
+      "updateDate": "2025-04-08T12:28:48.850Z"
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

@@ -1,0 +1,926 @@
+[
+  {
+    "ContainingType": "SME_API_RISK.Controllers.InternalControlsController",
+    "Method": "Search_TInternalControlsActivity",
+    "RelativePath": "api/SYS-RISK/internal-controls/activities",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchTInternalControlsActivityModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.TInternalControlsActivityApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.InternalControlsController",
+    "Method": "BatchEndOfDay_activities",
+    "RelativePath": "api/SYS-RISK/internal-controls/activities-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.InternalControlsController",
+    "Method": "Search_TInternalControlsEvaluation",
+    "RelativePath": "api/SYS-RISK/internal-controls/evaluations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchTInternalControlsEvaluationModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.TInternalControlsEvaluationApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.InternalControlsController",
+    "Method": "BatchEndOfDay_evaluations",
+    "RelativePath": "api/SYS-RISK/internal-controls/evaluations-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.InternalControlsController",
+    "Method": "Search_TInternalControlsReports",
+    "RelativePath": "api/SYS-RISK/internal-controls/reports",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchTInternalControlsReportModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.TInternalControlsReportApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.InternalControlsController",
+    "Method": "BatchEndOfDay_reports",
+    "RelativePath": "api/SYS-RISK/internal-controls/reports-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "Search_BTable",
+    "RelativePath": "api/SYS-RISK/master/risk-B-Table",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskBTableApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "BatchEndOfDay_RiskBTable",
+    "RelativePath": "api/SYS-RISK/master/risk-B-Table-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "BatchEndOfDay_MRiskFactor",
+    "RelativePath": "api/SYS-RISK/master/risk-Factor-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "Search",
+    "RelativePath": "api/SYS-RISK/master/risk-factors",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskFactor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskFactorApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "Search_Risklevels",
+    "RelativePath": "api/SYS-RISK/master/risk-levels",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskLevelsApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "BatchEndOfDay_MRisklevels",
+    "RelativePath": "api/SYS-RISK/master/risk-levels-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "Search_RiskOwner",
+    "RelativePath": "api/SYS-RISK/master/risk-Owner",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskOwnerModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskOwnerApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "BatchEndOfDay_MRiskOwner",
+    "RelativePath": "api/SYS-RISK/master/risk-Owner-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "Search_RiskTreatmentOption",
+    "RelativePath": "api/SYS-RISK/master/risk-treatment-option",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskTreatmentOptionModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTreatmentOptionApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "BatchEndOfDay_RiskTreatmentOption",
+    "RelativePath": "api/SYS-RISK/master/risk-treatment-option-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "Search",
+    "RelativePath": "api/SYS-RISK/master/risk-types",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTypeApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "BatchEndOfDay_MRiskType",
+    "RelativePath": "api/SYS-RISK/master/risk-types-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "Search_RiskUniverse",
+    "RelativePath": "api/SYS-RISK/master/risk-universe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskRiskUniverse",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskUniverseApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.MasterDataController",
+    "Method": "BatchEndOfDay_Muniverse",
+    "RelativePath": "api/SYS-RISK/master/risk-universe-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_Riskatable",
+    "RelativePath": "api/SYS-RISK/risk/a-table",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskTATableModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTATableApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_atable",
+    "RelativePath": "api/SYS-RISK/risk/a-table-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "SearchRiskAfterPlanAsync",
+    "RelativePath": "api/SYS-RISK/risk/after-plan-risk",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskAfterPlanApiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskAfterPlanRiskApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_TRiskAfterPlan",
+    "RelativePath": "api/SYS-RISK/risk/after-plan-risk-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_Riskctable",
+    "RelativePath": "api/SYS-RISK/risk/c-table",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskCTableApiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskCTableApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_Riskctable",
+    "RelativePath": "api/SYS-RISK/risk/c-table-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_RiskDatahistory",
+    "RelativePath": "api/SYS-RISK/risk/data-history",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskTDataHistoryModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTDataHistoryApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_datahistory",
+    "RelativePath": "api/SYS-RISK/risk/data-history-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_RiskEmergencyPlan",
+    "RelativePath": "api/SYS-RISK/risk/emergency-plan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskEmergencyPlanModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskEmergencyPlanApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_RiskEmergencyPlan",
+    "RelativePath": "api/SYS-RISK/risk/emergency-plan-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_ExistingControl",
+    "RelativePath": "api/SYS-RISK/risk/existing-controls",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskExistingControlApiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskExistingControlApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_ExistingControl",
+    "RelativePath": "api/SYS-RISK/risk/existing-controls-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_Riskimpact",
+    "RelativePath": "api/SYS-RISK/risk/impacts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskTImpactModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTImpactApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_MRiskimpact",
+    "RelativePath": "api/SYS-RISK/risk/impacts-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_RiskKpi",
+    "RelativePath": "api/SYS-RISK/risk/kpis",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskTkpiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTKipsApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_MRiskTKpi",
+    "RelativePath": "api/SYS-RISK/risk/kpis-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_Risklagging",
+    "RelativePath": "api/SYS-RISK/risk/lagging",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskLaggingModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskLaggingApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_Risklagging",
+    "RelativePath": "api/SYS-RISK/risk/lagging-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_Riskleading",
+    "RelativePath": "api/SYS-RISK/risk/leading",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskLeadingModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskLeadingApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_Riskleading",
+    "RelativePath": "api/SYS-RISK/risk/leading-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_Riskperformances",
+    "RelativePath": "api/SYS-RISK/risk/performances",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchTRiskPerformanceModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTRiskPerformanceApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_RiskPerformancesy",
+    "RelativePath": "api/SYS-RISK/risk/performances-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_RiskExistingControls",
+    "RelativePath": "api/SYS-RISK/risk/plan-existing-controls",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskPlanExistingControlModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskPlanExistingControlApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_RiskExistingControls",
+    "RelativePath": "api/SYS-RISK/risk/plan-existing-controls-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_RiskResult",
+    "RelativePath": "api/SYS-RISK/risk/result",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskResultModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskResultApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_RiskResult",
+    "RelativePath": "api/SYS-RISK/risk/result-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_RiskResult2",
+    "RelativePath": "api/SYS-RISK/risk/risk-levels",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchTRiskLevelApiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTLevelApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_RiskTLevel",
+    "RelativePath": "api/SYS-RISK/risk/risk-levels-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_RiskRootCauses",
+    "RelativePath": "api/SYS-RISK/risk/root-causes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SearchRiskTRootCauseModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RiskTRootCauseApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_rootcauses",
+    "RelativePath": "api/SYS-RISK/risk/root-causes-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "Search_Risktrigger",
+    "RelativePath": "api/SYS-RISK/risk/triggers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchModel",
+        "Type": "SME_API_RISK.Models.SearchRiskTTriggersModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_RISK.Models.RiskTTriggerApiResponse, SME_API_RISK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_RISK.Controllers.RiskController",
+    "Method": "BatchEndOfDay_MRisktrigger",
+    "RelativePath": "api/SYS-RISK/risk/triggers-BatchEndOfDay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "riskDefineID": 2,
+      "rootCauseList": [
+        {
+          "rootCauseType": "สาเหตุหลัก",
+          "rootCauseName": "ไมสามารถดำเนินงานไดอยางครบถวน",
+          "solotionsList": [
+            {
+              "solotions": "แบงปน (Sharing)",
+              "qualityCost": "ไมสามารถแบงปนได",
+              "quantityCost": "ไมสามารถแบงปนได",
+              "qualityBenefit": "ไมสามารถแบงปนได",
+              "quantityenefit": "ไมสามารถแบงปนได"
+            },
+            {
+              "solotions": "แบงปน (Sharing)xxxx",
+              "qualityCost": "ไมสามารถแบงปนไดxxxx",
+              "quantityCost": "ไมสามารถแบงปนไดxxx",
+              "qualityBenefit": "ไมสามารถแบงปนไดxxx",
+              "quantityenefit": "ไมสามารถแบงปนไดxxx"
+            }
+          ],
+          "updateDate": "2025-04-08T12:28:48.850Z"
+        },
+        {
+          "rootCauseType": "สาเหตุหลั5ก",
+          "rootCauseName": "ไมสามารถดำเนินงานไดอยางครบถ555วน",
+          "solotionsList": [
+            {
+              "solotions": "แบงปน (Sharing)555",
+              "qualityCost": "ไมสามารถแบงปนได123456",
+              "quantityCost": "ไมสามารถแบงปนได123456",
+              "qualityBenefit": "ไมสามารถแบงปนได123456",
+              "quantityenefit": "ไมสามารถแบงปนได123456"
+            },
+            {
+              "solotions": "แบงปน (Sharing)5",
+              "qualityCost": "ไมสามารถแบงปนได987",
+              "quantityCost": "ไมสามารถแบงปนได987",
+              "qualityBenefit": "ไมสามารถแบงปนได987",
+              "quantityenefit": "ไมสามารถแบงปนได987"
+            }
+          ],
+          "updateDate": "2025-05-16T12:28:48.850Z"
+        }
+      ]
+    }
+  ],
+  "timestamp": "2025-04-08T12:28:48.850Z"
+}

@@ -1,0 +1,6 @@
+@SME_API_RISK_HostAddress = http://localhost:5107
+
+GET {{SME_API_RISK_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

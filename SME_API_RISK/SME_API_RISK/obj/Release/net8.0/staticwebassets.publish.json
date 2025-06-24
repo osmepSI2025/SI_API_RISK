@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "z5HQ2hCE3K0c5oWNtY1yIOpuuWWw8v+HazXPT+gKTzA=",
+  "Source": "SME_API_RISK",
+  "BasePath": "_content/SME_API_RISK",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

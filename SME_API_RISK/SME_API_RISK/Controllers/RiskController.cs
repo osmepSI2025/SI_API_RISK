@@ -286,7 +286,7 @@ namespace SME_API_RISK.Controllers
             return Ok();
         }
 
-        [HttpPost("risk-levels")]
+        [HttpPost("risk-risk-levels")]
         public async Task<ActionResult<IEnumerable<RiskTLevelApiResponse>>> Search_RiskResult2([FromBody] SearchTRiskLevelApiModels searchModel)
         {
             var riskFactors = await _riskLevelService.SearchRiskTLevelAsync(searchModel);

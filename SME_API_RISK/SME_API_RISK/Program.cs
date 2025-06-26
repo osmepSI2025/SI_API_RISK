@@ -87,6 +87,9 @@ try
     builder.Services.AddScoped<ICallAPIService, CallAPIService>(); // Register ICallAPIService with CallAPIService
     builder.Services.AddHttpClient<CallAPIService>();
 
+    builder.Services.AddHostedService<JobSchedulerService>();
+
+
 
 
     var app = builder.Build();

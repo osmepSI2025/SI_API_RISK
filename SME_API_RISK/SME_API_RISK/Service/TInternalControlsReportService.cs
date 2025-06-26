@@ -1,4 +1,5 @@
-﻿using SME_API_RISK.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using SME_API_RISK.Entities;
 using SME_API_RISK.Models;
 using SME_API_RISK.Repository;
 using SME_API_RISK.Services;
@@ -261,47 +262,20 @@ namespace SME_API_RISK.Service
         }
 
 
-        //public async Task<IEnumerable<TInternalControlsReportApiResponse>> GetAllAsyncSearch_TInternalControlsReport(SearchTInternalControlsReportModels models)
-        //{
-        //    try
-        //    {
-        //        // ดึงข้อมูลจาก repository
-        //        var RiskTKpis = await _repository.GetAllAsyncSearch_TInternalControlsReport(models);
+        public async Task<int> BatchEndOfDay_reports_schedule()
+        {
+            int currentYear = DateTime.Now.Year;
 
-        //        // Mapping ข้อมูล
-        //        var responseList = RiskTKpis.Select(r => new TInternalControlsReportApiResponse
-        //        {
-        //            ResponseCode = "200",
-        //            ResponseMsg = "OK",
-        //            data = new List<TInternalControlsReportModels>
-        //    {
-        //        new TInternalControlsReportModels
-        //        {
+            foreach (var year in Enumerable.Range(0, 3))
+            {
+                int christianYear = currentYear - year;
+                int buddhistYear = christianYear + 543;
 
-        //            Departments = r.Departments,
+                await BatchEndOfDay_InternalActivity(buddhistYear);
+            }
 
-        //            AssessControlResult = r.AssessControlResult,
-        //            QuaterFinished = r.QuaterFinished,
-        //            Q1 = r.Q1,
-        //            Q2 = r.Q2,
-        //             Q3 = r.Q3,
-        //             Q4 = r.Q4,
-        //             Result = r.Result,
-        //             ClosedComment = r.ClosedComment,
-        //            UpdateDate = r.UpdateDate
-        //        }
-        //    },
-        //            Timestamp = DateTime.UtcNow
-        //        }).ToList();
 
-        //        return responseList;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"[ERROR] Failed to search GetAllAsyncSearch_TInternalControlsReport: {ex.Message}");
-        //        return Enumerable.Empty<TInternalControlsReportApiResponse>();
-        //    }
-        //}
-
+            return 1;
+        }
     }
 }

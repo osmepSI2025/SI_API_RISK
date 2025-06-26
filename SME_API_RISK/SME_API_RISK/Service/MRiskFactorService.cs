@@ -1,4 +1,5 @@
-﻿using SME_API_RISK.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using SME_API_RISK.Entities;
 using SME_API_RISK.Models;
 using SME_API_RISK.Repository;
 using SME_API_RISK.Services;
@@ -188,6 +189,20 @@ namespace SME_API_RISK.Service
             }
         }
 
+        public async Task<int> BatchEndOfDay_MRiskFactor_schedule()
+        {
+            int currentYear = DateTime.Now.Year;
 
+            foreach (var year in Enumerable.Range(0, 3))
+            {
+                int christianYear = currentYear - year;
+                int buddhistYear = christianYear + 543;
+                ///
+               await BatchEndOfDay_MRiskFactor(buddhistYear, "");
+                ///
+
+            }
+            return 1;
+        }
     }
 }

@@ -13,15 +13,15 @@ public partial class TRiskCtable
 
     public string RootCauseName { get; set; } = null!;
 
-    public string Solutions { get; set; } = null!;
+    public string? Solutions { get; set; }
 
-    public string QualityCost { get; set; } = null!;
+    public string? QualityCost { get; set; }
 
-    public string QuantityCost { get; set; } = null!;
+    public string? QuantityCost { get; set; }
 
-    public string QualityBenefit { get; set; } = null!;
+    public string? QualityBenefit { get; set; }
 
-    public string QuantityBenefit { get; set; } = null!;
+    public string? QuantityBenefit { get; set; }
 
     public DateTime? UpdateDate { get; set; }
 }

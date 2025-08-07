@@ -7,23 +7,23 @@ public partial class TInternalControlsReport
 {
     public int Id { get; set; }
 
-    public string Departments { get; set; } = null!;
+    public string? Departments { get; set; }
 
-    public string AssessControlResult { get; set; } = null!;
+    public string? AssessControlResult { get; set; }
 
-    public string QuaterFinished { get; set; } = null!;
+    public string? QuaterFinished { get; set; }
 
-    public string Q1 { get; set; } = null!;
+    public string? Q1 { get; set; }
 
-    public string Q2 { get; set; } = null!;
+    public string? Q2 { get; set; }
 
-    public string Q3 { get; set; } = null!;
+    public string? Q3 { get; set; }
 
-    public string Q4 { get; set; } = null!;
+    public string? Q4 { get; set; }
 
-    public string Result { get; set; } = null!;
+    public string? Result { get; set; }
 
-    public string ClosedComment { get; set; } = null!;
+    public string? ClosedComment { get; set; }
 
     public DateTime? UpdateDate { get; set; }
 

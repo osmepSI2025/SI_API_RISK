@@ -107,55 +107,55 @@ public class JobSchedulerService : BackgroundService
                 break;
             case "root-causes":
 
-                await serviceProvider.GetRequiredService<TRiskRootCauseService>().BatchEndOfDay_MRiskRootCauses(0);
+                await serviceProvider.GetRequiredService<TRiskRootCauseService>().BatchEndOfDay_MRiskRootCauses(null);
                 break;
             case "plan-existing-controls":
         
-                await serviceProvider.GetRequiredService<TRiskPlanExistingControlService>().BatchEndOfDay_MRiskRootCauses(0);
+                await serviceProvider.GetRequiredService<TRiskPlanExistingControlService>().BatchEndOfDay_RiskExistingControls(null);
                 break;
             case "emergency-plan":
          
-                await serviceProvider.GetRequiredService<TRiskEmergencyPlanService>().BatchEndOfDay_MRiskEmergencyPlan(0);
+                await serviceProvider.GetRequiredService<TRiskEmergencyPlanService>().BatchEndOfDay_MRiskEmergencyPlan(null);
                 break;
             case "leading":
                
-                await serviceProvider.GetRequiredService<TRiskLeadingService>().BatchEndOfDay_RiskLeading(0);
+                await serviceProvider.GetRequiredService<TRiskLeadingService>().BatchEndOfDay_RiskLeading(null);
                 break;
             case "lagging":
                 
-                await serviceProvider.GetRequiredService<TRiskLaggingService>().BatchEndOfDay_RiskLagging(0);
+                await serviceProvider.GetRequiredService<TRiskLaggingService>().BatchEndOfDay_RiskLagging(null);
                 break;
             case "a-table":
 
-                await serviceProvider.GetRequiredService<TRiskAtableService>().BatchEndOfDay_MRiskTAtable(0);
+                await serviceProvider.GetRequiredService<TRiskAtableService>().BatchEndOfDay_MRiskTAtable(null);
                 break;
             case "data-history":
 
-                await serviceProvider.GetRequiredService<TRiskDataHistoryService>().BatchEndOfDay_RiskTRiskDataHistory(0);
+                await serviceProvider.GetRequiredService<TRiskDataHistoryService>().BatchEndOfDay_RiskTRiskDataHistory(null);
                 break;
             case "c-table":
 
-                await serviceProvider.GetRequiredService<TRiskCtableService>().BatchEndOfDay_MRiskCtable(0);
+                await serviceProvider.GetRequiredService<TRiskCtableService>().BatchEndOfDay_MRiskCtable(null);
                 break;
             case "after-plan-risk":
 
-                await serviceProvider.GetRequiredService<TRiskAfterPlanService>().BatchEndOfDay_TRiskAfterPlan(0,0);
+                await serviceProvider.GetRequiredService<TRiskAfterPlanService>().BatchEndOfDay_TRiskAfterPlan(null);
                 break;
             case "performances":
 
-                await serviceProvider.GetRequiredService<TRiskPerformanceService>().BatchEndOfDay_RiskPerformancesy(0);
+                await serviceProvider.GetRequiredService<TRiskPerformanceService>().BatchEndOfDay_RiskPerformancesy(null);
                 break;
             case "existing-controls":
 
-                await serviceProvider.GetRequiredService<TRiskExistingControlService>().BatchEndOfDay_MExistingControl(0);
+                await serviceProvider.GetRequiredService<TRiskExistingControlService>().BatchEndOfDay_MExistingControl(null);
                 break;
             case "result":
-
-                await serviceProvider.GetRequiredService<TRiskResultService>().BatchEndOfDay_RiskReult(0);
+             
+                await serviceProvider.GetRequiredService<TRiskResultService>().BatchEndOfDay_RiskReult(null);
                 break;
             case "risk-risk-levels":
 
-                await serviceProvider.GetRequiredService<TRiskLevelService>().BatchEndOfDay_TRiskLevel(0, 0);
+                await serviceProvider.GetRequiredService<TRiskLevelService>().BatchEndOfDay_TRiskLevel(null);
                 break;
 
 

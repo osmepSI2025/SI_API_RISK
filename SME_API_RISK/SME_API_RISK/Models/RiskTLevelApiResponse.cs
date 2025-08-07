@@ -32,5 +32,6 @@ namespace SME_API_RISK.Models
         public int riskFactorID { get; set; }
         public int riskYear { get; set; }
 
+        public string keyword { get; set; }
     }
 }

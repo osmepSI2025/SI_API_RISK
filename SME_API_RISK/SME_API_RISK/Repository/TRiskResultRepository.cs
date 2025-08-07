@@ -26,11 +26,36 @@ namespace SME_API_RISK.Repository
             }
         }
 
-        public async Task<IEnumerable<TRiskResult>> GetAllAsync()
+        public async Task<IEnumerable<TRiskResult>> GetAllAsync(SearchRiskResultModels searchModel)
         {
             try
             {
-                return await _context.TRiskResults.ToListAsync();
+                var query = _context.TRiskResults.AsQueryable();
+
+                // Filter by riskFactorID if provided (not 0)
+                if (searchModel.riskFactorID != 0)
+                {
+                    query = query.Where(x => x.RiskDefineId == searchModel.riskFactorID);
+                }
+
+                // Filter by keyword if provided (not null or empty)
+                if (!string.IsNullOrEmpty(searchModel.keyword))
+                {
+                    query = query.Where(x =>
+                        (x.Performances != null && x.Performances.Contains(searchModel.keyword)) ||
+                        (x.Status != null && x.Status.Contains(searchModel.keyword))
+                    );
+                }
+
+                // Paging (optional, based on 'page' property)
+                // Example: 20 items per page
+                int pageSize = 20;
+                if (searchModel.page > 0)
+                {
+                    query = query.Skip((searchModel.page - 1) * pageSize).Take(pageSize);
+                }
+
+                return await query.ToListAsync();
             }
             catch (Exception ex)
             {

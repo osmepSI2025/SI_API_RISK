@@ -53,7 +53,7 @@ namespace SME_API_RISK.Service
             };
             var RiskTypeApiResponse = new RiskTypeApiResponse();
           
-            var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "risk-factors" });
+            var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "risk-types" });
             var apiParam = LApi.Select(x => new MapiInformationModels
             {
                 ServiceNameCode = x.ServiceNameCode,

@@ -12,7 +12,7 @@
     {
         public int RiskDefineId { get; set; }
 
-        public string Triggers { get; set; } = null!;
+        public string triggers { get; set; } = null!;
 
         public DateTime? UpdateDate { get; set; }
     }
@@ -23,7 +23,7 @@
     {
         public int page { get; set; }
         public int pageSize { get; set; }
-   
+        public string keyword { get; set; }
         public int riskFactorID { get; set; }
        
     }

@@ -86,8 +86,15 @@ namespace SME_API_RISK.Service
                 throw;
             }
         }
-        public async Task BatchEndOfDay_MRiskTAtable(int xid)
+        public async Task BatchEndOfDay_MRiskTAtable(SearchRiskTATableModels models)
         {
+            if (models == null)
+            {
+                models.page = 1;
+                models.pageSize = 1000;
+                models.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -112,14 +119,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskTATableModels Msearch = new SearchRiskTATableModels
-            {
-
-
-                RiskDefineId = xid
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+        
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, models);
             var result = JsonSerializer.Deserialize<RiskTATableApiResponse>(apiResponse, options);
 
             RiskTATableApiResponse = result ?? new RiskTATableApiResponse();
@@ -180,7 +181,7 @@ namespace SME_API_RISK.Service
                 var RiskTKpis = await _repository.GetAllAsyncSearch_RiskTAtable(models);
                 if (RiskTKpis == null || !RiskTKpis.Any())
                 {
-                   await BatchEndOfDay_MRiskTAtable(models.RiskDefineId);
+                   await BatchEndOfDay_MRiskTAtable(models);
                     RiskTKpis = await _repository.GetAllAsyncSearch_RiskTAtable(models);
                 }
 

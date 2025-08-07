@@ -90,13 +90,20 @@ namespace SME_API_RISK.Service
         }
         public async Task BatchEndOfDay_MRiskTTrigger(SearchRiskTTriggersModels models)
         {
+            if (models == null)
+            {
+                models.page = 1;
+                models.pageSize = 1000;
+                models.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 WriteIndented = true
             };
             var RiskTTriggerApiResponse = new RiskTTriggerApiResponse();
-            var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "kpis" });
+            var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "triggers" });
             var apiParam = LApi.Select(x => new MapiInformationModels
             {
                 ServiceNameCode = x.ServiceNameCode,
@@ -134,7 +141,7 @@ namespace SME_API_RISK.Service
                             var newRisk = new TRiskTrigger
                             {
 
-                                Triggers = item.Triggers,
+                                Triggers = item.triggers,
                                 RiskDefineId = item.RiskDefineId,
 
                                 UpdateDate = item.UpdateDate,
@@ -147,7 +154,7 @@ namespace SME_API_RISK.Service
                         {
                             // Update existing record
 
-                            existing.Triggers = item.Triggers;
+                            existing.Triggers = item.triggers;
                             existing.RiskDefineId = item.RiskDefineId;
                             existing.UpdateDate = item.UpdateDate;
 
@@ -186,7 +193,7 @@ namespace SME_API_RISK.Service
                     data = RiskTKpis.Select(r => new RiskTTriggersModels
                     {
                         RiskDefineId = r.RiskDefineId,
-                        Triggers = r.Triggers,
+                        triggers = r.Triggers,
                         UpdateDate = r.UpdateDate
                     }).ToList(),
                     Timestamp = DateTime.UtcNow

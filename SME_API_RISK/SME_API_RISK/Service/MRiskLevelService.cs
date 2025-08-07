@@ -120,7 +120,7 @@ namespace SME_API_RISK.Service
             }
             else
             {
-                var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "risk-owners" });
+                var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "risk-levels" });
                 var apiParam = LApi.Select(x => new MapiInformationModels
                 {
                     ServiceNameCode = x.ServiceNameCode,

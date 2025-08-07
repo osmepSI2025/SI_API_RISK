@@ -48,8 +48,7 @@ namespace SME_API_RISK.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[ERROR] Failed to get TRiskPerformance by id: {ex.Message}");
-                throw;
+                return null;
             }
         }
 
@@ -92,13 +91,17 @@ namespace SME_API_RISK.Repository
 
 
 
-                if (searchModel.RiskDefineId != 0 && searchModel.RiskDefineId != null)
+                if (searchModel.riskFactorID != 0 && searchModel.riskFactorID != null)
                 {
                     query = query.Where(bu =>
-                        bu.RiskDefineId == searchModel.RiskDefineId
+                        bu.RiskDefineId == searchModel.riskFactorID
                     );
                 }
-
+                if (searchModel.keyword != "" && searchModel.keyword != null)
+                {
+                    query = query.Where(bu =>
+                        bu.Performances.Contains(searchModel.keyword));
+                }
                 //// Apply pagination
                 //if (searchModel.page != 0 && searchModel.pageSize != 0)
                 //{

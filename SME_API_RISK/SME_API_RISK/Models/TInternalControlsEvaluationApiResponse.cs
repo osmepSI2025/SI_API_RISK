@@ -40,6 +40,8 @@
         public int pageSize { get; set; }
    
         public int riskYear { get; set; }
-       
+
+        public string keyword { get; set; }
+
     }
 }

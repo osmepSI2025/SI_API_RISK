@@ -4,7 +4,7 @@
     {
         public string ResponseCode { get; set; }
         public string ResponseMsg { get; set; }
-        public List<RiskFactorModels> RiskFactorList { get; set; }
+        public List<RiskFactorModels> data { get; set; }
         public DateTime Timestamp { get; set; }
     }
 

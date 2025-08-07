@@ -2,6 +2,7 @@ using SME_API_RISK.Entities;
 using SME_API_RISK.Models;
 using SME_API_RISK.Repository;
 using SME_API_RISK.Services;
+using System.Numerics;
 using System.Text.Json;
 
 namespace SME_API_RISK.Service
@@ -86,8 +87,17 @@ namespace SME_API_RISK.Service
                 throw;
             }
         }
-        public async Task BatchEndOfDay_TRiskAfterPlan(int xId, int xyear)
+        public async Task BatchEndOfDay_TRiskAfterPlan(SearchRiskAfterPlanApiModels searchModels)
+
         {
+            if (searchModels==null) 
+            {
+                searchModels.page = 1;
+                searchModels.pageSize = 1000;
+                searchModels.riskYear = 0;
+
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -112,12 +122,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskAfterPlanApiModels Msearch = new SearchRiskAfterPlanApiModels
-            {
-                riskFactorID = xId,
-                riskYear = xyear
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+     
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, searchModels);
             var result = JsonSerializer.Deserialize<RiskAfterPlanRiskApiResponse>(apiResponse, options);
 
             RiskAfterPlanRiskApiResponse = result ?? new RiskAfterPlanRiskApiResponse();
@@ -149,12 +155,12 @@ namespace SME_API_RISK.Service
                                         L = manage.l,
                                         I = manage.i,
 
-                                        YearBudget = xyear,
-                                        UpdateDate = manage.updateDate
+                                        YearBudget = searchModels.riskYear,
+                                        UpdateDate = item.updateDate
                                     };
                                     await _repository.AddAsync(newRecord);
                                 }
-                                else if (manage.updateDate > (existing.UpdateDate ?? DateTime.MinValue))
+                                else if (item.updateDate > (existing.UpdateDate ?? DateTime.MinValue))
                                 {
                                     existing.RiskDefineId = item.riskDefineID;
                                     existing.RiskDefine = item.riskDefine;
@@ -162,8 +168,8 @@ namespace SME_API_RISK.Service
                                     existing.L = manage.l;
                                     existing.I = manage.i;
 
-                                    existing.YearBudget = xyear;
-                                    existing.UpdateDate = manage.updateDate;
+                                    existing.YearBudget = searchModels.riskYear;
+                                    existing.UpdateDate = item.updateDate;
                                     await _repository.UpdateAsync(existing);
                                 }
                             }
@@ -194,23 +200,25 @@ namespace SME_API_RISK.Service
                 if (plans != null && plans.Any())
                 {
                     response.data = plans
-                        .GroupBy(p => p.RiskDefineId)
-                        .Select(g => new AfterPlanRiskDataItem
-                        {
-                            riskDefineID = g.Key,
-                            quaterList = g.Select(x => new AfterPlanRiskQuaterItem
-                            {
-                                quaterNo = x.QuaterNo, // Make sure TRiskAfterPlan has property QuaterNo
-                                l = x.L, // Make sure TRiskAfterPlan has property L
-                                i = x.I, // Make sure TRiskAfterPlan has property I
-
-                                updateDate = x.UpdateDate ?? DateTime.MinValue
-                            }).ToList()
-                        }).ToList();
+                                  .GroupBy(p => p.RiskDefineId)
+                                  .Select(g => new AfterPlanRiskDataItem
+                                  {
+                                      riskDefineID = g.Key,
+                                      // Use First() to get representative values for riskDefine and updateDate from the group
+                                      riskDefine = g.First().RiskDefine ?? string.Empty,
+                                      updateDate = g.First().UpdateDate ?? DateTime.MinValue,
+                                      quaterList = g.Select(x => new AfterPlanRiskQuaterItem
+                                      {
+                                          quaterNo = x.QuaterNo,
+                                          l = x.L,
+                                          i = x.I,
+                                          // updateDate = x.UpdateDate ?? DateTime.MinValue
+                                      }).ToList()
+                                  }).ToList();
                 }
                 else
                 {
-                    await BatchEndOfDay_TRiskAfterPlan(searchModel.riskFactorID, searchModel.riskYear);
+                    await BatchEndOfDay_TRiskAfterPlan(searchModel);
                     var plans2 = await _repository.GetAllAsyncSearch_TRiskAfterPlan(searchModel);
                     response = new RiskAfterPlanRiskApiResponse
                     {
@@ -226,13 +234,15 @@ namespace SME_API_RISK.Service
                             .Select(g => new AfterPlanRiskDataItem
                             {
                                 riskDefineID = g.Key,
+                                // Use First() to get representative values for riskDefine and updateDate from the group
+                                riskDefine = g.First().RiskDefine ?? string.Empty,
+                                updateDate = g.First().UpdateDate ?? DateTime.MinValue,
                                 quaterList = g.Select(x => new AfterPlanRiskQuaterItem
                                 {
                                     quaterNo = x.QuaterNo,
                                     l = x.L,
                                     i = x.I,
-
-                                    updateDate = x.UpdateDate ?? DateTime.MinValue
+                                    // updateDate = x.UpdateDate ?? DateTime.MinValue
                                 }).ToList()
                             }).ToList();
                     }

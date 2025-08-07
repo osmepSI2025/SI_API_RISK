@@ -73,19 +73,19 @@ public partial class RISKDBContext : DbContext
 
     public virtual DbSet<TRiskimpact> TRiskimpacts { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=27.254.173.62;Database=bluecarg_SME_RISK;User Id=SME_RISK;Password=@Glk04m28;TrustServerCertificate=True;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=192.168.9.155;Database=bluecarg_SME_RISK;User Id=sa;Password=Osmep@2025;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("SME_RISK");
+        modelBuilder.UseCollation("Thai_CI_AS");
 
         modelBuilder.Entity<MApiInformation>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_MApiInformation");
 
-            entity.ToTable("M_ApiInformation");
+            entity.ToTable("M_ApiInformation", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.ApiKey).HasMaxLength(150);
@@ -107,7 +107,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__M_Btable__3214EC07D6AC64C6");
 
-            entity.ToTable("M_RiskBtable");
+            entity.ToTable("M_RiskBtable", "SME_RISK");
 
             entity.Property(e => e.OldWork).HasMaxLength(255);
             entity.Property(e => e.Performance).HasMaxLength(255);
@@ -120,7 +120,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.RiskFactorId).HasName("PK__RiskFact__7C28B9349C932AB5");
 
-            entity.ToTable("M_RiskFactor");
+            entity.ToTable("M_RiskFactor", "SME_RISK");
 
             entity.Property(e => e.RiskFactorId).HasColumnName("RiskFactorID");
             entity.Property(e => e.RiskDefineId).HasColumnName("RiskDefineID");
@@ -133,7 +133,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__M_RiskLe__3214EC0779229861");
 
-            entity.ToTable("M_RiskLevel");
+            entity.ToTable("M_RiskLevel", "SME_RISK");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.ImpactDefine).HasMaxLength(255);
@@ -145,7 +145,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__M_RiskOw__3214EC07E45BEFC2");
 
-            entity.ToTable("M_RiskOwner");
+            entity.ToTable("M_RiskOwner", "SME_RISK");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Name).HasMaxLength(255);
@@ -156,7 +156,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__M_RiskTr__3214EC07E5E72384");
 
-            entity.ToTable("M_RiskTreatmentOptions");
+            entity.ToTable("M_RiskTreatmentOptions", "SME_RISK");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Name).HasMaxLength(255);
@@ -165,7 +165,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<MRiskType>(entity =>
         {
-            entity.ToTable("M_RiskType");
+            entity.ToTable("M_RiskType", "SME_RISK");
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
@@ -182,7 +182,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__M_RiskUn__3214EC076DFB4D2F");
 
-            entity.ToTable("M_RiskUniverse");
+            entity.ToTable("M_RiskUniverse", "SME_RISK");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Name).HasMaxLength(255);
@@ -191,7 +191,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<MScheduledJob>(entity =>
         {
-            entity.ToTable("M_ScheduledJobs", "dbo");
+            entity.ToTable("M_ScheduledJobs");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.JobName).HasMaxLength(150);
@@ -199,7 +199,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<MScheduledJob1>(entity =>
         {
-            entity.ToTable("M_ScheduledJobs");
+            entity.ToTable("M_ScheduledJobs", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.JobName).HasMaxLength(150);
@@ -207,7 +207,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TInternalControlsActivity>(entity =>
         {
-            entity.ToTable("T_internalControlsActivities");
+            entity.ToTable("T_internalControlsActivities", "SME_RISK");
 
             entity.Property(e => e.Activities).HasColumnName("activities");
             entity.Property(e => e.Departments).HasColumnName("departments");
@@ -217,7 +217,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TInternalControlsEvaluation>(entity =>
         {
-            entity.ToTable("T_internalControlsEvaluations");
+            entity.ToTable("T_internalControlsEvaluations", "SME_RISK");
 
             entity.Property(e => e.Activities).HasColumnName("activities");
             entity.Property(e => e.Departments).HasColumnName("departments");
@@ -235,7 +235,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TInternalControlsReport>(entity =>
         {
-            entity.ToTable("T_internalControlsReports");
+            entity.ToTable("T_internalControlsReports", "SME_RISK");
 
             entity.Property(e => e.Departments).HasColumnName("departments");
             entity.Property(e => e.Q1).HasColumnName("q1");
@@ -249,10 +249,9 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskAfterPlan>(entity =>
         {
-            entity.ToTable("T_RiskAfterPlan");
+            entity.ToTable("T_RiskAfterPlan", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.RiskDefine).HasMaxLength(255);
             entity.Property(e => e.RiskDefineId).HasColumnName("RiskDefineID");
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
@@ -261,7 +260,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.RiskDefineId);
 
-            entity.ToTable("T_RiskAtable");
+            entity.ToTable("T_RiskAtable", "SME_RISK");
 
             entity.Property(e => e.RiskDefineId)
                 .ValueGeneratedNever()
@@ -272,7 +271,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskCtable>(entity =>
         {
-            entity.ToTable("T_RiskCtable");
+            entity.ToTable("T_RiskCtable", "SME_RISK");
 
             entity.Property(e => e.QualityBenefit).HasMaxLength(255);
             entity.Property(e => e.QualityCost).HasMaxLength(255);
@@ -289,7 +288,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.RiskDefineId);
 
-            entity.ToTable("T_RiskDataHistory");
+            entity.ToTable("T_RiskDataHistory", "SME_RISK");
 
             entity.Property(e => e.RiskDefineId)
                 .ValueGeneratedNever()
@@ -300,7 +299,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskEmergencyPlan>(entity =>
         {
-            entity.ToTable("T_RiskEmergencyPlan");
+            entity.ToTable("T_RiskEmergencyPlan", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.QplanEnd)
@@ -317,7 +316,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskExistingControl>(entity =>
         {
-            entity.ToTable("T_RiskExistingControls");
+            entity.ToTable("T_RiskExistingControls", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Performances)
@@ -337,7 +336,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.RiskDefineId).HasName("PK__M_RiskKP__850A50F5434B9247");
 
-            entity.ToTable("T_RiskKPI");
+            entity.ToTable("T_RiskKPI", "SME_RISK");
 
             entity.Property(e => e.RiskDefineId)
                 .ValueGeneratedNever()
@@ -350,7 +349,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskLagging>(entity =>
         {
-            entity.ToTable("T_RiskLagging");
+            entity.ToTable("T_RiskLagging", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.LaggingIndicator)
@@ -362,7 +361,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskLeading>(entity =>
         {
-            entity.ToTable("T_RiskLeading");
+            entity.ToTable("T_RiskLeading", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.LeadingIndicator)
@@ -374,7 +373,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskLevel>(entity =>
         {
-            entity.ToTable("T_RiskLevels");
+            entity.ToTable("T_RiskLevels", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Colors).HasMaxLength(50);
@@ -386,20 +385,17 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskPerformance>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("T_RiskPerformances");
+            entity.ToTable("T_RiskPerformances", "SME_RISK");
 
-            entity.Property(e => e.Performances)
-                .HasMaxLength(255)
-                .HasColumnName("performances");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Performances).HasColumnName("performances");
             entity.Property(e => e.RiskDefineId).HasColumnName("RiskDefineID");
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<TRiskPlanExistingControl>(entity =>
         {
-            entity.ToTable("T_RiskPlanExistingControls");
+            entity.ToTable("T_RiskPlanExistingControls", "SME_RISK");
 
             entity.Property(e => e.ExistingControl).HasMaxLength(255);
             entity.Property(e => e.RiskDefineId).HasColumnName("RiskDefineID");
@@ -408,7 +404,7 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<TRiskResult>(entity =>
         {
-            entity.ToTable("T_RiskResult");
+            entity.ToTable("T_RiskResult", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Performances)
@@ -431,7 +427,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK_MRiskRootCause");
 
-            entity.ToTable("T_RiskRootCause");
+            entity.ToTable("T_RiskRootCause", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CreatedBy)
@@ -440,7 +436,6 @@ public partial class RISKDBContext : DbContext
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.Ratio).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.RiskDefineId).HasColumnName("RiskDefineID");
             entity.Property(e => e.RootCauseName).HasMaxLength(255);
             entity.Property(e => e.RootCauseType).HasMaxLength(255);
@@ -453,7 +448,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.RiskDefineId).HasName("PK__M_RiskTr__850A50F590FF493F");
 
-            entity.ToTable("T_RiskTriggers");
+            entity.ToTable("T_RiskTriggers", "SME_RISK");
 
             entity.Property(e => e.RiskDefineId)
                 .ValueGeneratedNever()
@@ -468,7 +463,7 @@ public partial class RISKDBContext : DbContext
         {
             entity.HasKey(e => e.RiskDefineId).HasName("PK__M_Riskim__850A50F50E07D651");
 
-            entity.ToTable("T_Riskimpacts");
+            entity.ToTable("T_Riskimpacts", "SME_RISK");
 
             entity.Property(e => e.RiskDefineId)
                 .ValueGeneratedNever()

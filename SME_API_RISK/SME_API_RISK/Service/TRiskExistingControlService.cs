@@ -88,8 +88,15 @@ namespace SME_API_RISK.Service
                 throw;
             }
         }
-        public async Task BatchEndOfDay_MExistingControl(int xId)
+        public async Task BatchEndOfDay_MExistingControl(SearchRiskExistingControlApiModels searchModel)
         {
+            if (searchModel == null)
+            {
+                searchModel.keyword = "";
+                searchModel.page = 1;
+                searchModel.pageSize = 1000;
+                searchModel.riskFactorID = 0;
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -114,16 +121,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskExistingControlApiModels Msearch = new SearchRiskExistingControlApiModels
-            {
-
-                page = 1,
-                pageSize = 1000,
-                riskFactorID = xId,
-
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+       
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, searchModel);
             var result = JsonSerializer.Deserialize<RiskExistingControlApiResponse>(apiResponse, options);
 
             RiskExistingControlApiResponse = result ?? new RiskExistingControlApiResponse();
@@ -207,7 +206,7 @@ namespace SME_API_RISK.Service
                 }
                 else
                 {
-                    await BatchEndOfDay_MExistingControl(searchModel.riskFactorID);
+                    await BatchEndOfDay_MExistingControl(searchModel);
                     var plans2 = await _repository.GetAllAsync();
                     response = new RiskExistingControlApiResponse
                     {

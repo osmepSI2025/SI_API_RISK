@@ -88,8 +88,15 @@ namespace SME_API_RISK.Service
                 throw;
             }
         }
-        public async Task BatchEndOfDay_MRiskRootCauses(int xId)
+        public async Task BatchEndOfDay_RiskExistingControls(SearchRiskPlanExistingControlModels searchModel)
         {
+            if (searchModel == null)
+            {
+                searchModel.page = 1;
+                searchModel.pageSize = 1000;
+                searchModel.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -114,16 +121,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskPlanExistingControlModels Msearch = new SearchRiskPlanExistingControlModels
-            {
-
-                page = 1,
-                pageSize = 1000,
-                riskFactorID = xId,
-
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+      
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, searchModel);
             var result = JsonSerializer.Deserialize<RiskPlanExistingControlApiResponse>(apiResponse, options);
 
             RiskPlanExistingControlApiResponse = result ?? new RiskPlanExistingControlApiResponse();
@@ -184,7 +183,7 @@ namespace SME_API_RISK.Service
                 var rootCauses = await _repository.GetAllAsyncSearch_PlanExistingControl(searchModel);
                 if (rootCauses == null) 
                 {
-                await BatchEndOfDay_MRiskRootCauses(searchModel.riskFactorID);
+                await BatchEndOfDay_RiskExistingControls(searchModel);
                     rootCauses = await _repository.GetAllAsyncSearch_PlanExistingControl(searchModel);
                 }
 
@@ -213,7 +212,7 @@ namespace SME_API_RISK.Service
                 }
                 else
                 {
-                    await BatchEndOfDay_MRiskRootCauses(searchModel.riskFactorID);
+                    await BatchEndOfDay_RiskExistingControls(searchModel);
                     var rootCauses2 = await _repository.GetAllAsyncSearch_PlanExistingControl(searchModel);
                     if (rootCauses2 != null && rootCauses2.Count() != 0)
                     {

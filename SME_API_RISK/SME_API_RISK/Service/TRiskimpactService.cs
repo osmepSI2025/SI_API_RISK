@@ -139,6 +139,7 @@ namespace SME_API_RISK.Service
                                 RiskDefineId = item.RiskDefineId,
 
                                 UpdateDate = item.UpdateDate,
+                                
                             };
 
                             await _repository.AddAsync(newRisk);

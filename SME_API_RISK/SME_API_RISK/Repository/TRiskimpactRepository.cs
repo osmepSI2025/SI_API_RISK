@@ -98,7 +98,12 @@ namespace SME_API_RISK.Repository
                         bu.RiskDefineId == searchModel.riskFactorID
                     );
                 }
-
+                if (searchModel.keyword != "" && searchModel.keyword != null)
+                {
+                    query = query.Where(bu =>
+                        bu.Impacts.Contains(searchModel.keyword)
+                    );
+                }
                 // Apply pagination
                 if (searchModel.page != 0 && searchModel.pageSize != 0)
                 {

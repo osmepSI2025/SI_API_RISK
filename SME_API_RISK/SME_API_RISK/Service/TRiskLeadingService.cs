@@ -87,8 +87,15 @@ namespace SME_API_RISK.Service
                 throw;
             }
         }
-        public async Task BatchEndOfDay_RiskLeading(int xid)
+        public async Task BatchEndOfDay_RiskLeading(SearchRiskLeadingModels models)
         {
+            if (models == null)
+            {
+                models.page = 1;
+                models.pageSize = 1000;
+                models.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -113,14 +120,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskLeadingModels Msearch = new SearchRiskLeadingModels
-            {
-
-                riskFactorID = xid,
-
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+        
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, models);
             var result = JsonSerializer.Deserialize<RiskLeadingApiResponse>(apiResponse, options);
 
             RiskLeadingApiResponse = result ?? new RiskLeadingApiResponse();
@@ -161,7 +162,7 @@ namespace SME_API_RISK.Service
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"[ERROR] Failed to process BatchEndOfDay_RiskLeading Id {xid}: {ex.Message}");
+                        Console.WriteLine($"[ERROR] Failed to process BatchEndOfDay_RiskLeading  {ex.Message}");
                     }
                 }
             }
@@ -178,7 +179,7 @@ namespace SME_API_RISK.Service
                 var RiskTKpis = await _repository.GetAllAsyncSearch_RiskLeading(models);
                 if (RiskTKpis == null || !RiskTKpis.Any())
                 {
-                    await BatchEndOfDay_RiskLeading(models.riskFactorID);
+                    await BatchEndOfDay_RiskLeading(models);
                     var RiskTKpis2 = await _repository.GetAllAsyncSearch_RiskLeading(models);
                     if (RiskTKpis2 == null || !RiskTKpis2.Any())
                     {

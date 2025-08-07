@@ -92,10 +92,10 @@ namespace SME_API_RISK.Repository
 
 
 
-                if (searchModel.RiskDefineId != 0 && searchModel.RiskDefineId != null)
+                if (searchModel.riskFactorID != 0 && searchModel.riskFactorID != null)
                 {
                     query = query.Where(bu =>
-                        bu.RiskDefineId == searchModel.RiskDefineId
+                        bu.RiskDefineId == searchModel.riskFactorID
                     );
                 }
 

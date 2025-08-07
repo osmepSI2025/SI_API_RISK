@@ -93,6 +93,9 @@ namespace SME_API_RISK.Services
                     InnerException = ex.InnerException?.ToString(),
                     SystemCode = Api_SysCode,
                     CreatedBy = "system"
+                      ,
+                    HttpCode = "500",
+                    ApiKey = apiModels.ApiKey,
 
                 };
                 await RecErrorLogApiAsync(apiModels, errorLog);
@@ -323,6 +326,13 @@ namespace SME_API_RISK.Services
                     InnerException = ex.InnerException?.ToString(),
                     SystemCode = Api_SysCode,
                     CreatedBy = "system"
+                    ,
+                    HttpCode = "500",
+                    ApiKey = apiModels.ApiKey,
+                   
+
+
+
 
                 };
                 await RecErrorLogApiAsync(apiModels, errorLog);

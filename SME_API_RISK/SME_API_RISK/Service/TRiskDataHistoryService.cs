@@ -90,8 +90,15 @@ namespace SME_API_RISK.Service
             }
         }
 
-        public async Task BatchEndOfDay_RiskTRiskDataHistory(int xid)
+        public async Task BatchEndOfDay_RiskTRiskDataHistory(SearchRiskTDataHistoryModels models)
         {
+            if (models == null)
+            {
+                models.page = 1;
+                models.pageSize = 1000;
+                models.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -116,15 +123,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskTDataHistoryModels Msearch = new SearchRiskTDataHistoryModels
-            {
 
-                //page = 1,
-                //pageSize = 1000,
-                RiskDefineId = xid
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, models);
             var result = JsonSerializer.Deserialize<RiskTDataHistoryApiResponse>(apiResponse, options);
 
             RiskTDataHistoryApiResponse = result ?? new RiskTDataHistoryApiResponse();
@@ -166,7 +166,7 @@ namespace SME_API_RISK.Service
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"[ERROR] Failed to process RiskTRiskDataHistory Id {item.RiskDefineId}: {ex.Message}");
+                        Console.WriteLine($"[ERROR] Failed to process RiskTRiskDataHistory: {ex.Message}");
                     }
                 }
             }
@@ -183,7 +183,7 @@ namespace SME_API_RISK.Service
                 var RiskTKpis = await _repository.GetAllAsyncSearch_RiskTRiskDataHistory(models);
               if(RiskTKpis == null || !RiskTKpis.Any())
                 {
-                   await BatchEndOfDay_RiskTRiskDataHistory(models.RiskDefineId);
+                   await BatchEndOfDay_RiskTRiskDataHistory(models);
                     RiskTKpis = await _repository.GetAllAsyncSearch_RiskTRiskDataHistory(models);
                 }
                 // Mapping ข้อมูล

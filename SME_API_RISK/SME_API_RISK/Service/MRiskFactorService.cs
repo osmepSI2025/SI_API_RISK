@@ -88,9 +88,9 @@ namespace SME_API_RISK.Service
 
             riskFactorApiResponse = result ?? new RiskFactorApiResponse();
 
-            if (riskFactorApiResponse.ResponseCode == "200" && riskFactorApiResponse.RiskFactorList != null)
+            if (riskFactorApiResponse.ResponseCode == "200" && riskFactorApiResponse.data != null)
             {
-                foreach (var item in riskFactorApiResponse.RiskFactorList)
+                foreach (var item in riskFactorApiResponse.data)
                 {
                     try
                     {
@@ -160,7 +160,7 @@ namespace SME_API_RISK.Service
                 {
                     ResponseCode = "200",
                     ResponseMsg = "OK",
-                    RiskFactorList = riskFactors.Select(r => new RiskFactorModels
+                    data = riskFactors.Select(r => new RiskFactorModels
                     {
                         RiskDefineID = r.RiskDefineId,
                         RiskYear = r.RiskYear,
@@ -183,7 +183,7 @@ namespace SME_API_RISK.Service
                 {
                     ResponseCode = "500",
                     ResponseMsg = "Internal Server Error",
-                    RiskFactorList = new List<RiskFactorModels>(),
+                    data = new List<RiskFactorModels>(),
                     Timestamp = DateTime.UtcNow
                 };
             }

@@ -89,8 +89,17 @@ namespace SME_API_RISK.Service
                 throw;
             }
         }
-        public async Task BatchEndOfDay_RiskPerformancesy(int xid)
+        public async Task BatchEndOfDay_RiskPerformancesy(SearchTRiskPerformanceModels models)
         {
+            if (models == null)
+            {
+                models = new SearchTRiskPerformanceModels
+                {
+                    page = 1,
+                    pageSize = 1000,
+                    riskFactorID = 0 // Default value if not provided
+                };
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -116,15 +125,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchTRiskPerformanceModels Msearch = new SearchTRiskPerformanceModels
-            {
-
-                //page = 1,
-                //pageSize = 1000,
-                RiskDefineId = xid,
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+           
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, models);
             var result = JsonSerializer.Deserialize<RiskTRiskPerformanceApiResponse>(apiResponse, options);
 
             RiskTRiskPerformanceApiResponse = result ?? new RiskTRiskPerformanceApiResponse();
@@ -184,7 +186,7 @@ namespace SME_API_RISK.Service
                 var RiskTKpis = await _repository.GetAllAsyncSearch_RiskTRiskPerformance(models);
                 if (RiskTKpis == null || !RiskTKpis.Any())
                 {
-                    await BatchEndOfDay_RiskPerformancesy(models.RiskDefineId); // Call the batch process if no data found
+                    await BatchEndOfDay_RiskPerformancesy(models); // Call the batch process if no data found
                     RiskTKpis = await _repository.GetAllAsyncSearch_RiskTRiskPerformance(models);
                 }
                 // Mapping ข้อมูล

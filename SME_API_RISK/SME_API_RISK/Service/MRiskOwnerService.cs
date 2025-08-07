@@ -184,24 +184,23 @@ namespace SME_API_RISK.Service
                     }
                 }
                
+  
+
                 // Mapping ข้อมูล
-                var responseList = riskFactors.Select(r => new RiskOwnerApiResponse
+                var responseList = new RiskOwnerApiResponse
                 {
                     ResponseCode = "200",
                     ResponseMsg = "OK",
-                    data = new List<RiskOwnerModels>
-            {
-                new RiskOwnerModels
-                {
-                      id = r.Id,
-                      name = r.Name,
-                    updateDate = r.UpdateDate
-                }
-            },
+                    data = riskFactors.Select(r => new RiskOwnerModels
+                    {
+                        id = r.Id,
+                        name = r.Name,
+                        updateDate = r.UpdateDate
+                    }).ToList(),
                     Timestamp = DateTime.UtcNow
-                }).ToList();
+                };
 
-                return responseList;
+                return new List<RiskOwnerApiResponse> { responseList };
             }
             catch (Exception ex)
             {

@@ -13,7 +13,7 @@ public partial class TRiskRootCause
 
     public string RootCauseName { get; set; } = null!;
 
-    public decimal Ratio { get; set; }
+    public int Ratio { get; set; }
 
     public DateTime? UpdateDate { get; set; }
 

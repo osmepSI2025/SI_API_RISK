@@ -28,4 +28,5 @@ public class SearchRiskResultModels
 
     public int riskFactorID { get; set; }
 
+    public  string keyword { get; set; }
 }

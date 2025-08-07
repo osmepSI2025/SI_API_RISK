@@ -74,8 +74,11 @@ namespace SME_API_RISK.Controllers
         [HttpGet("kpis-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_MRiskTKpi()
         {
-            SearchRiskTkpiModels models = new SearchRiskTkpiModels();
-             await _riskKpiService.BatchEndOfDay_MRiskTKpi(models);
+            SearchRiskTkpiModels searchModel = new SearchRiskTkpiModels();
+          
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            await _riskKpiService.BatchEndOfDay_MRiskTKpi(searchModel);
 
             return Ok();
         }
@@ -89,6 +92,9 @@ namespace SME_API_RISK.Controllers
         public async Task<ActionResult> BatchEndOfDay_MRiskimpact()
         {
             SearchRiskTImpactModels searchModel = new SearchRiskTImpactModels();
+           
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
             await _riskimpactService.BatchEndOfDay_MRiskTImpact(searchModel);
 
             return Ok();
@@ -103,6 +109,9 @@ namespace SME_API_RISK.Controllers
         public async Task<ActionResult> BatchEndOfDay_MRisktrigger()
         {
             SearchRiskTTriggersModels searchModel = new SearchRiskTTriggersModels();
+          
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
             await _riskTriggerService.BatchEndOfDay_MRiskTTrigger(searchModel);
 
             return Ok();
@@ -116,7 +125,10 @@ namespace SME_API_RISK.Controllers
         [HttpGet("root-causes-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_rootcauses()
         {
-            await _riskRootCauseService.BatchEndOfDay_MRiskRootCauses(0);
+            SearchRiskTRootCauseModels searchModel = new SearchRiskTRootCauseModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            await _riskRootCauseService.BatchEndOfDay_MRiskRootCauses(searchModel);
 
             return Ok();
         }
@@ -131,7 +143,10 @@ namespace SME_API_RISK.Controllers
         [HttpGet("plan-existing-controls-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_RiskExistingControls()
         {
-            await _riskPlanExistingControlService.BatchEndOfDay_MRiskRootCauses(0);
+            SearchRiskPlanExistingControlModels searchModel = new SearchRiskPlanExistingControlModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            await _riskPlanExistingControlService.BatchEndOfDay_RiskExistingControls(searchModel);
 
             return Ok();
         }
@@ -145,7 +160,11 @@ namespace SME_API_RISK.Controllers
         [HttpGet("emergency-plan-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_RiskEmergencyPlan()
         {
-            await _riskEmergencyPlanService.BatchEndOfDay_MRiskEmergencyPlan(0);
+            SearchRiskEmergencyPlanModels searchModel = new SearchRiskEmergencyPlanModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+
+            await _riskEmergencyPlanService.BatchEndOfDay_MRiskEmergencyPlan(searchModel);
 
             return Ok();
         }
@@ -161,7 +180,10 @@ namespace SME_API_RISK.Controllers
         [HttpGet("leading-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_Riskleading()
         {
-            await _riskLeadingService.BatchEndOfDay_RiskLeading(0);
+            SearchRiskLeadingModels searchModel = new SearchRiskLeadingModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID =0;
+            await _riskLeadingService.BatchEndOfDay_RiskLeading(searchModel);
 
             return Ok();
         }
@@ -176,7 +198,10 @@ namespace SME_API_RISK.Controllers
         [HttpGet("lagging-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_Risklagging()
         {
-            await _riskLaggingService.BatchEndOfDay_RiskLagging(0);
+            SearchRiskLaggingModels searchModel = new SearchRiskLaggingModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            await _riskLaggingService.BatchEndOfDay_RiskLagging(searchModel);
 
             return Ok();
         }
@@ -192,7 +217,10 @@ namespace SME_API_RISK.Controllers
         [HttpGet("a-table-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_atable()
         {
-            await _riskAtableService.BatchEndOfDay_MRiskTAtable(0);
+            SearchRiskTATableModels searchModel = new SearchRiskTATableModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            await _riskAtableService.BatchEndOfDay_MRiskTAtable(searchModel);
 
             return Ok();
         }
@@ -205,7 +233,10 @@ namespace SME_API_RISK.Controllers
         [HttpGet("data-history-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_datahistory()
         {
-            await _riskDataHistoryService.BatchEndOfDay_RiskTRiskDataHistory(0);
+            SearchRiskTDataHistoryModels searchModel =new SearchRiskTDataHistoryModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            await _riskDataHistoryService.BatchEndOfDay_RiskTRiskDataHistory(searchModel);
 
             return Ok();
         }
@@ -220,7 +251,10 @@ namespace SME_API_RISK.Controllers
         [HttpGet("c-table-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_Riskctable()
         {
-            await _riskCtableService.BatchEndOfDay_MRiskCtable(0);
+            SearchRiskCTableApiModels searchModel = new SearchRiskCTableApiModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            await _riskCtableService.BatchEndOfDay_MRiskCtable(searchModel);
 
             return Ok();
         }
@@ -234,7 +268,11 @@ namespace SME_API_RISK.Controllers
         [HttpGet("after-plan-risk-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_TRiskAfterPlan()
         {
-            await _riskAfterPlanService.BatchEndOfDay_TRiskAfterPlan(0, 0);
+            SearchRiskAfterPlanApiModels searchModel = new SearchRiskAfterPlanApiModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            searchModel.riskYear = 0;
+            await _riskAfterPlanService.BatchEndOfDay_TRiskAfterPlan(searchModel);
 
             return Ok();
         }
@@ -249,7 +287,13 @@ namespace SME_API_RISK.Controllers
         [HttpGet("performances-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_RiskPerformancesy()
         {
-            await _riskPerformanceService.BatchEndOfDay_RiskPerformancesy(0);
+            SearchTRiskPerformanceModels searchModel =new SearchTRiskPerformanceModels();
+            searchModel.pageSize = 1000;
+            searchModel.page = 1;
+            searchModel.riskFactorID = 0;
+            searchModel.riskYear = 0;
+
+            await _riskPerformanceService.BatchEndOfDay_RiskPerformancesy(searchModel);
 
             return Ok();
         }
@@ -265,7 +309,11 @@ namespace SME_API_RISK.Controllers
         [HttpGet("existing-controls-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_ExistingControl()
         {
-            await _riskExistingControlService.BatchEndOfDay_MExistingControl(0);
+            SearchRiskExistingControlApiModels searchModel = new SearchRiskExistingControlApiModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            searchModel.page = 1;
+            await _riskExistingControlService.BatchEndOfDay_MExistingControl(searchModel);
 
             return Ok();
         }
@@ -281,7 +329,11 @@ namespace SME_API_RISK.Controllers
         [HttpGet("result-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_RiskResult()
         {
-            await _riskResultService.BatchEndOfDay_RiskReult(0);
+            SearchRiskResultModels searchModel =new SearchRiskResultModels();
+            searchModel.pageSize = 1000;
+            searchModel.riskFactorID = 0;
+            searchModel.page = 1;
+            await _riskResultService.BatchEndOfDay_RiskReult(searchModel);
 
             return Ok();
         }
@@ -296,7 +348,7 @@ namespace SME_API_RISK.Controllers
         [HttpGet("risk-levels-BatchEndOfDay")]
         public async Task<ActionResult> BatchEndOfDay_RiskTLevel()
         {
-            await _riskLevelService.BatchEndOfDay_TRiskLevel(0,0);
+            await _riskLevelService.BatchEndOfDay_TRiskLevel(null);
 
             return Ok();
         }

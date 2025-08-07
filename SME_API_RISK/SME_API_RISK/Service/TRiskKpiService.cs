@@ -170,30 +170,43 @@ namespace SME_API_RISK.Service
         {
             try
             {
-                // ดึงข้อมูลจาก repository
-                var RiskTKpis = await _repository.GetAllAsyncSearch_RiskTKpi(models);
-
-                if (RiskTKpis == null || !RiskTKpis.Any())
-                { 
-                    await BatchEndOfDay_MRiskTKpi(models); 
-                    RiskTKpis = await _repository.GetAllAsyncSearch_RiskTKpi(models);
-                }
-
-                // Mapping ข้อมูล
-                var response = new RiskTKipsApiResponse
+                if ( models.pageSize != 0)
                 {
-                    ResponseCode = "200",
-                    ResponseMsg = "OK",
-                    data = RiskTKpis.Select(r => new RiskTKpisModels
-                    {
-                        RiskDefineId = r.RiskDefineId,
-                        Kpis = r.Kpis,
-                        UpdateDate = r.UpdateDate
-                    }).ToList(),
-                    Timestamp = DateTime.UtcNow
-                };
+                    // ดึงข้อมูลจาก repository
+                    var RiskTKpis = await _repository.GetAllAsyncSearch_RiskTKpi(models);
 
-                return response;
+                    if (RiskTKpis == null || !RiskTKpis.Any())
+                    {
+                        await BatchEndOfDay_MRiskTKpi(models);
+                        RiskTKpis = await _repository.GetAllAsyncSearch_RiskTKpi(models);
+                    }
+
+                    // Mapping ข้อมูล
+                    var response = new RiskTKipsApiResponse
+                    {
+                        ResponseCode = "200",
+                        ResponseMsg = "OK",
+                        data = RiskTKpis.Select(r => new RiskTKpisModels
+                        {
+                            RiskDefineId = r.RiskDefineId,
+                            Kpis = r.Kpis,
+                            UpdateDate = r.UpdateDate
+                        }).ToList(),
+                        Timestamp = DateTime.UtcNow
+                    };
+
+                    return response;
+                }
+                else 
+                {
+                    return new RiskTKipsApiResponse
+                    {
+                        ResponseCode = "200",
+                        ResponseMsg = "OK",
+                        data = new List<RiskTKpisModels>(),
+                        Timestamp = DateTime.UtcNow
+                    };
+                }
             }
             catch (Exception ex)
             {

@@ -89,8 +89,15 @@ namespace SME_API_RISK.Service
             }
         }
 
-        public async Task BatchEndOfDay_MRiskCtable(int xId)
+        public async Task BatchEndOfDay_MRiskCtable(SearchRiskCTableApiModels searchModel)
         {
+            if (searchModel == null)
+            {
+                searchModel.page = 1;
+                searchModel.pageSize = 1000;
+                searchModel.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -115,16 +122,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskCTableApiModels Msearch = new SearchRiskCTableApiModels
-            {
-
-                page = 1,
-                pageSize = 1000,
-                riskFactorID = xId,
-
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+       
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, searchModel);
             var result = JsonSerializer.Deserialize<RiskCTableApiResponse>(apiResponse, options);
 
             RiskCTableApiResponse = result ?? new RiskCTableApiResponse();
@@ -238,7 +237,7 @@ namespace SME_API_RISK.Service
                 }
                 else 
                 {
-                    await BatchEndOfDay_MRiskCtable(searchModel.riskFactorID);
+                    await BatchEndOfDay_MRiskCtable(searchModel);
                     var plans2 = await _repository.GetAllAsyncSearch_Ctable(searchModel);
                     response = new RiskCTableApiResponse
                     {

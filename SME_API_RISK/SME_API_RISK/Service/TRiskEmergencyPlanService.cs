@@ -95,7 +95,7 @@ namespace SME_API_RISK.Service
                 var plans = await _repository.GetAllAsyncSearch_EmergencyPlan(searchModel);
                 if (plans == null)
                 {
-              await BatchEndOfDay_MRiskEmergencyPlan(searchModel.riskFactorID);
+              await BatchEndOfDay_MRiskEmergencyPlan(searchModel);
                     plans = await _repository.GetAllAsyncSearch_EmergencyPlan(searchModel);
                 }
                 if (plans != null && plans.Count() != 0)
@@ -129,7 +129,7 @@ namespace SME_API_RISK.Service
                 }
                 else
                 {
-                    await BatchEndOfDay_MRiskEmergencyPlan(searchModel.riskFactorID);
+                    await BatchEndOfDay_MRiskEmergencyPlan(searchModel);
                     var rootCauses2 = await _repository.GetAllAsyncSearch_EmergencyPlan(searchModel);
                     if (rootCauses2 != null && rootCauses2.Count() != 0)
                     {
@@ -183,8 +183,15 @@ namespace SME_API_RISK.Service
                 };
             }
         }
-        public async Task BatchEndOfDay_MRiskEmergencyPlan(int xId)
+        public async Task BatchEndOfDay_MRiskEmergencyPlan(SearchRiskEmergencyPlanModels searchModel)
         {
+            if (searchModel == null)
+            {
+                searchModel.page = 1;
+                searchModel.pageSize = 1000;
+                searchModel.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -209,16 +216,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskEmergencyPlanModels Msearch = new SearchRiskEmergencyPlanModels
-            {
-
-                page = 1,
-                pageSize = 1000,
-                riskFactorID = xId,
-
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+     
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, searchModel);
             var result = JsonSerializer.Deserialize<RiskEmergencyPlanApiResponse>(apiResponse, options);
 
             RiskEmergencyPlanApiResponse = result ?? new RiskEmergencyPlanApiResponse();

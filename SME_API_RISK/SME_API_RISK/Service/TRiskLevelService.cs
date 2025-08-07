@@ -89,15 +89,22 @@ namespace SME_API_RISK.Service
                 throw;
             }
         }
-        public async Task BatchEndOfDay_TRiskLevel(int xId,int xyear)
+        public async Task BatchEndOfDay_TRiskLevel(SearchTRiskLevelApiModels searchModel)
         {
+            if (searchModel==null) 
+            {
+                searchModel.page = 1;
+                searchModel.pageSize = 1000;
+                searchModel.riskYear = 0;
+                searchModel.riskFactorID = 0; // Default value if not provided
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 WriteIndented = true
             };
             var RiskTLevelApiResponse = new RiskTLevelApiResponse();
-            var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "risk-levels" });
+            var LApi = await _repositoryApi.GetAllAsync(new MapiInformationModels { ServiceNameCode = "risk-levels-org" });
             var apiParam = LApi.Select(x => new MapiInformationModels
             {
                 ServiceNameCode = x.ServiceNameCode,
@@ -115,17 +122,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchTRiskLevelApiModels Msearch = new SearchTRiskLevelApiModels
-            {
-
-                page = 1,
-                pageSize = 1000,
-                riskFactorID = xId,
-                riskYear = xyear
-
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+        
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, searchModel);
             var result = JsonSerializer.Deserialize<RiskTLevelApiResponse>(apiResponse, options);
 
             RiskTLevelApiResponse = result ?? new RiskTLevelApiResponse();
@@ -157,7 +155,7 @@ namespace SME_API_RISK.Service
                                         L = manage.l,
                                         I = manage.i,
                                         Colors = manage.colors,
-                                        YearBudget = xyear,
+                                        YearBudget = searchModel.riskYear,
                                         UpdateDate = manage.updateDate
                                     };
                                     await _repository.AddAsync(newRecord);
@@ -170,7 +168,7 @@ namespace SME_API_RISK.Service
                                     existing.L = manage.l;
                                     existing.I = manage.i;
                                     existing.Colors = manage.colors;
-                                    existing.YearBudget = xyear;
+                                    existing.YearBudget = searchModel.riskYear;
                                     existing.UpdateDate = manage.updateDate;
                                     await _repository.UpdateAsync(existing);
                                 }
@@ -219,8 +217,8 @@ namespace SME_API_RISK.Service
                 }
                 else
                 {
-                    await BatchEndOfDay_TRiskLevel(searchModel.riskFactorID, searchModel.riskYear);
-                    var plans2 = await _repository.GetAllAsync();
+                    await BatchEndOfDay_TRiskLevel(searchModel);
+                    var plans2 = await _repository.GetAllAsyncSearch_TRiskLevel(searchModel);
                     response = new RiskTLevelApiResponse
                     {
                         responseCode = "200",

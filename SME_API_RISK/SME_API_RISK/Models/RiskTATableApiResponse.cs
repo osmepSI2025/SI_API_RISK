@@ -22,7 +22,10 @@
 
     public class SearchRiskTATableModels
     {
-        public int RiskDefineId { get; set; }
+        public int page { get; set; }
+        public int pageSize { get; set; }
+        public string keyword { get; set; }
+        public int riskFactorID { get; set; }
     }
 
 }

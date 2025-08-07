@@ -16,14 +16,14 @@ public class RiskTRootCauseItem
 {
     public string RootCauseType { get; set; }
     public string RootCauseName { get; set; }
-    public string Ratio { get; set; }
+    public int Ratio { get; set; }
     public DateTime? UpdateDate { get; set; }
 }
 public class SearchRiskTRootCauseModels
 {
     public int page { get; set; }
     public int pageSize { get; set; }
-
+    public string keyword { get; set; }
     public int riskFactorID { get; set; }
 
 }

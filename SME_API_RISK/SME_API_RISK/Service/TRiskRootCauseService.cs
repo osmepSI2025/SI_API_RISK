@@ -89,8 +89,16 @@ namespace SME_API_RISK.Service
             }
         }
 
-        public async Task BatchEndOfDay_MRiskRootCauses(int xId)
+        public async Task BatchEndOfDay_MRiskRootCauses(SearchRiskTRootCauseModels searchModel)
         {
+
+            if (searchModel == null)
+            {
+                searchModel.page = 1;
+                searchModel.pageSize = 1000;
+                searchModel.riskFactorID = 0;
+
+            }
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -115,16 +123,8 @@ namespace SME_API_RISK.Service
                 UpdateDate = x.UpdateDate,
                 Bearer = x.Bearer,
             }).FirstOrDefault(); // Use FirstOrDefault to handle empty lists
-            SearchRiskTRootCauseModels Msearch = new SearchRiskTRootCauseModels
-            {
-
-                page = 1,
-                pageSize = 1000,
-                riskFactorID = xId,
-
-
-            };
-            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, Msearch);
+          
+            var apiResponse = await _serviceApi.GetDataApiAsync(apiParam, searchModel);
             var result = JsonSerializer.Deserialize<RiskTRootCauseApiResponse>(apiResponse, options);
 
             RiskTRootCauseApiResponse = result ?? new RiskTRootCauseApiResponse();
@@ -153,7 +153,7 @@ namespace SME_API_RISK.Service
                                         RiskDefineId = item.RiskDefineID,
                                         RootCauseType = rootCause.RootCauseType,
                                         RootCauseName = rootCause.RootCauseName,
-                                        Ratio = decimal.Parse(rootCause.Ratio),
+                                        Ratio = rootCause.Ratio,
                                         UpdateDate = rootCause.UpdateDate
                                     };
 
@@ -163,7 +163,7 @@ namespace SME_API_RISK.Service
                                          rootCause.UpdateDate.Value.Date != existing.UpdateDate.Value.Date)
                                 {
                                     // Update existing record
-                                    existing.Ratio = decimal.Parse(rootCause.Ratio);
+                                    existing.Ratio = rootCause.Ratio;
                                     existing.UpdateDate = rootCause.UpdateDate;
 
                                     await _repository.UpdateAsync(existing);
@@ -188,7 +188,7 @@ namespace SME_API_RISK.Service
 
                 if (rootCauses == null)
                 {
-            await BatchEndOfDay_MRiskRootCauses(searchModel.riskFactorID);
+            await BatchEndOfDay_MRiskRootCauses(searchModel);
                     rootCauses = await _repository.GetAllAsyncSearch_RiskTRootCause(searchModel);
                 }
                 if (rootCauses != null && (rootCauses.Count() != 0))
@@ -202,7 +202,7 @@ namespace SME_API_RISK.Service
                            {
                                RootCauseType = rc.RootCauseType,
                                RootCauseName = rc.RootCauseName,
-                               Ratio = rc.Ratio.ToString(),
+                               Ratio = rc.Ratio,
                                UpdateDate = rc.UpdateDate
                            }).ToList()
                        }).ToList();
@@ -218,7 +218,7 @@ namespace SME_API_RISK.Service
                 }
                 else
                 {
-                   await BatchEndOfDay_MRiskRootCauses(searchModel.riskFactorID);
+                   await BatchEndOfDay_MRiskRootCauses(searchModel);
                     var rootCauses2 = await _repository.GetAllAsyncSearch_RiskTRootCause(searchModel);
                     if (rootCauses2 != null && rootCauses2.Count()!=0 )
                     {
@@ -231,7 +231,7 @@ namespace SME_API_RISK.Service
                            {
                                RootCauseType = rc.RootCauseType,
                                RootCauseName = rc.RootCauseName,
-                               Ratio = rc.Ratio.ToString(),
+                               Ratio = rc.Ratio,
                                UpdateDate = rc.UpdateDate
                            }).ToList()
                        }).ToList();

@@ -221,7 +221,7 @@ namespace SME_API_RISK.Service
             {
                 // ดึงข้อมูลจาก repository
                 var reports = await _repository.GetAllAsyncSearch_TInternalControlsReport(models);
-                if (reports!= null) 
+                if (reports == null || !reports.Any()) 
                 {
                 await BatchEndOfDay_InternalActivity(models.riskYear);
                     reports = await _repository.GetAllAsyncSearch_TInternalControlsReport(models);

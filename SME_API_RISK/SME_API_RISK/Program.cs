@@ -3,10 +3,22 @@ using SME_API_RISK.Entities;
 using SME_API_RISK.Repository;
 using SME_API_RISK.Service;
 using SME_API_RISK.Services;
-
+using Quartz;
+using Serilog;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
+
+    // Update the Serilog configuration to use the correct method
+    builder.Host.UseSerilog((context, services, loggerConfiguration) => loggerConfiguration
+        .ReadFrom.Configuration(context.Configuration) // Removed GetSection("Serilog")
+        .WriteTo.File(
+            path: "Logs/app-log.txt",
+            rollingInterval: RollingInterval.Day,
+            outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+        )
+    );
+
     builder.Services.AddDbContext<RISKDBContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
     //Add services to the container.
@@ -87,9 +99,17 @@ try
     builder.Services.AddScoped<ICallAPIService, CallAPIService>(); // Register ICallAPIService with CallAPIService
     builder.Services.AddHttpClient<CallAPIService>();
 
+    // Add Quartz.NET services
+    builder.Services.AddQuartz(q =>
+    {
+        //  q.UseMicrosoftDependencyInjectionScopedJobFactory();
+        q.AddJob<ScheduledJobPuller>(j => j.WithIdentity("ScheduledJobPuller").StoreDurably());
+    });
+
+    builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+
+    // Register your IHostedService to manage jobs
     builder.Services.AddHostedService<JobSchedulerService>();
-
-
 
 
     var app = builder.Build();

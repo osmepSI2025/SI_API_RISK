@@ -191,19 +191,19 @@ public partial class RISKDBContext : DbContext
 
         modelBuilder.Entity<MScheduledJob>(entity =>
         {
-            entity.ToTable("M_ScheduledJobs");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.JobName).HasMaxLength(150);
-        });
-
-        modelBuilder.Entity<MScheduledJob1>(entity =>
-        {
             entity.ToTable("M_ScheduledJobs", "SME_RISK");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.JobName).HasMaxLength(150);
         });
+
+        //modelBuilder.Entity<MScheduledJob1>(entity =>
+        //{
+        //    entity.ToTable("M_ScheduledJobs", "SME_RISK");
+
+        //    entity.Property(e => e.Id).HasColumnName("id");
+        //    entity.Property(e => e.JobName).HasMaxLength(150);
+        //});
 
         modelBuilder.Entity<TInternalControlsActivity>(entity =>
         {

@@ -45,7 +45,6 @@ namespace SME_API_RISK.Repository
             try
             {
                 // If there is no primary key, you may need to adjust this logic.
-               // return await _context.TInternalControlsActivities.FindAsync(id);
                 return await _context.TInternalControlsActivities.FirstOrDefaultAsync(e => e.Departments == depart && e.Activities == acti );
 
             }

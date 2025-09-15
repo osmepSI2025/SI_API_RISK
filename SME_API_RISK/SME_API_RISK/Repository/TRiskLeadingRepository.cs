@@ -99,13 +99,6 @@ namespace SME_API_RISK.Repository
                     );
                 }
 
-                //// Apply pagination
-                //if (searchModel.page != 0 && searchModel.pageSize != 0)
-                //{
-                //    int skip = (searchModel.page - 1) * searchModel.pageSize;
-                //    query = query.Skip(skip).Take(searchModel.pageSize);
-                //}
-
 
                 return await query.ToListAsync();
             }

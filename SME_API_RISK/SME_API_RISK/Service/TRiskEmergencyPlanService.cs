@@ -50,18 +50,6 @@ namespace SME_API_RISK.Service
             }
         }
 
-        //public async Task<TRiskEmergencyPlan?> GetByIdAsync(int riskDefineId)
-        //{
-        //    try
-        //    {
-        //        return await _repository.GetByIdAsync(riskDefineId);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"[ERROR] Service failed to get TRiskEmergencyPlan by id: {ex.Message}");
-        //        throw;
-        //    }
-        //}
 
         public async Task UpdateAsync(TRiskEmergencyPlan entity)
         {

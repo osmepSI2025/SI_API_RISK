@@ -89,25 +89,6 @@ namespace SME_API_RISK.Repository
             try
             {
                 var query = _context.MRiskBtables.AsQueryable();
-
-
-
-                //if (!string.IsNullOrEmpty(searchModel.keyword))
-                //{
-                //    query = query.Where(bu =>
-                //        bu.OldWork.Contains(searchModel.keyword)||
-                //        bu.Performance.Contains(searchModel.keyword) 
-                //    );
-                //}
-
-                //// Apply pagination
-                //if (searchModel.page != 0 && searchModel.pageSize != 0)
-                //{
-                //    int skip = (searchModel.page - 1) * searchModel.pageSize;
-                //    query = query.Skip(skip).Take(searchModel.pageSize);
-                //}
-
-
                 return await query.ToListAsync();
             }
             catch (Exception ex)

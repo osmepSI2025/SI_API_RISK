@@ -52,18 +52,7 @@ namespace SME_API_RISK.Service
             }
         }
 
-        //public async Task<TInternalControlsActivity?> GetByIdAsync(int id)
-        //{
-        //    try
-        //    {
-        //        return await _repository.GetByIdAsync(id);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"[ERROR] Service failed to get TInternalControlsActivity by id: {ex.Message}");
-        //        throw;
-        //    }
-        //}
+     
 
         public async Task UpdateAsync(TInternalControlsActivity activity)
         {

@@ -92,23 +92,6 @@ namespace SME_API_RISK.Repository
 
 
 
-                //if (!string.IsNullOrEmpty(searchModel.keyword))
-                //{
-                //    query = query.Where(bu =>
-                //        //bu.Levels.Contains(searchModel.keyword)||
-                //        bu.LikelihoodDefine.Contains(searchModel.keyword)||
-                //        bu.ImpactDefine.Contains(searchModel.keyword)
-
-                //    );
-                //}
-
-                //// Apply pagination
-                //if (searchModel.page != 0 && searchModel.pageSize != 0)
-                //{
-                //    int skip = (searchModel.page - 1) * searchModel.pageSize;
-                //    query = query.Skip(skip).Take(searchModel.pageSize);
-                //}
-
 
                 return await query.ToListAsync();
             }
